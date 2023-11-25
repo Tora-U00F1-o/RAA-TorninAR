@@ -5,8 +5,10 @@ using UnityEngine;
 public class MapSceneController : MonoBehaviour
 {
 
+    public GameModePersistence gameModePersistence;
     public Transform dispositivo;
     private Animator dispositivoAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +23,5 @@ public class MapSceneController : MonoBehaviour
     public void hideMap() {
         dispositivoAnimator.SetBool("MapaOn", false);
     }
+    
 }

@@ -5,6 +5,7 @@ public class FollowPlayer : MonoBehaviour {
 	public Transform player;
 	public void Start()
 	{
+		Debug.Log("Start");
 	}
 	private void OnMouseDown(){
         changePosition();

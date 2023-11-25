@@ -1,17 +1,18 @@
 using UnityEngine;
 
-public class SingletonPersistente : MonoBehaviour
+public class GameModePersistence : MonoBehaviour
 {
     // Variable estática para la instancia
-    public static SingletonPersistente Instance;
+    public static GameModePersistence Instance;
     private GameObject obj;
+
+    public bool practiceMode = true;
 
     void Awake()
     {
         // Comprobar si ya existe una instancia
         if (Instance == null)
         {
-            Debug.Log(" es null -> se crea");
             // Si no, esta instancia se convierte en la única
             Instance = this;
             obj = gameObject;
@@ -19,24 +20,14 @@ public class SingletonPersistente : MonoBehaviour
         }
         else
         {
-            enable(false);
-            Debug.Log("ya existe");
             // Si ya existe otra instancia, destruir esta para evitar duplicados
             if (Instance != this)
             {
-                Debug.Log("se destrulle la otra");
                 Destroy(gameObject);
-                enable(true);
             }
         }
     }
 
-    private void enable(bool active) {
-        if(obj != null) {
-            
-            obj.SetActive(active);
-        }
-    }
 
     // Aquí puedes añadir más funciones según tus necesidades
 }
