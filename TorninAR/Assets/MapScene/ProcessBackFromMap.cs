@@ -5,17 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ProcessBackFromMap : MonoBehaviour
 {
-    
-    public GameModePersistence gameModePersistence;
-
     public string MainMenuScene;
     public string GameScene;
 
     private void OnMouseDown()
     {
-        Debug.Log(" --> "+gameModePersistence.practiceMode);
         SceneManager.LoadScene(
-            gameModePersistence.practiceMode ? MainMenuScene : GameScene 
+            GameModePersistence.practiceMode ? MainMenuScene : GameScene 
         );
 
     }

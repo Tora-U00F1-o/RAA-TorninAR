@@ -4,15 +4,14 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class ProcessStartGame : MonoBehaviour
+public class ChangeScenePersistence : MonoBehaviour
 {
     public string scene;
-    public bool practiceMode;
-    public GameModePersistence gameModePersistence;
+    public bool newPracticeMode;
 
     private void OnMouseDown()
     {
-        gameModePersistence.practiceMode = practiceMode;
+       GameModePersistence.practiceMode = newPracticeMode;
         SceneManager.LoadScene(scene);
     }
 }

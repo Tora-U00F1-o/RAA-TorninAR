@@ -2,32 +2,12 @@ using UnityEngine;
 
 public class GameModePersistence : MonoBehaviour
 {
-    // Variable estática para la instancia
-    public static GameModePersistence Instance;
-    private GameObject obj;
 
-    public bool practiceMode = true;
+    public static bool practiceMode = false;
 
-    void Awake()
-    {
-        // Comprobar si ya existe una instancia
-        if (Instance == null)
-        {
-            // Si no, esta instancia se convierte en la única
-            Instance = this;
-            obj = gameObject;
-            DontDestroyOnLoad(gameObject); // Evita destruir al cargar nueva escena
-        }
-        else
-        {
-            // Si ya existe otra instancia, destruir esta para evitar duplicados
-            if (Instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
+    // For Game Scene
+    public static bool isLlamadaRecibida = false;
+    public static int zonaObjetivo = 0; // zonas = 0, 1, 2
 
 
-    // Aquí puedes añadir más funciones según tus necesidades
 }

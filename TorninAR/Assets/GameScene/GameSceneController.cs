@@ -9,6 +9,7 @@ public class GameSceneController : MonoBehaviour
     public GameObject IncomingCallScreen;
     public GameObject VideoScreen;
     public GameObject BuscarZonaScreen;
+    public GameObject ZonaEncontradaScreen;
 
     public VideoPlayer videoPlayer;
 
@@ -16,11 +17,39 @@ public class GameSceneController : MonoBehaviour
     void Start()
     {
         videoPlayer.loopPointReached += OnVideoEnded;
+
+        //Enseñamos la pantalla en función del estado del juego
+        IncomingCallScreen.SetActive(false);
+        VideoScreen.SetActive(false);
+
+        if(GameModePersistence.isLlamadaRecibida) {
+            loadScreen(BuscarZonaScreen);
+        } else {
+            loadScreen(StartScreen);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(BuscarZonaScreen.activeSelf ) {
+            bool isInZona = false;
+            if(isInZona) {
+                loadScreen(ZonaEncontradaScreen);
+            }
+
+
+        }
+    }
+
+    private void loadScreen(GameObject screen) {
+        StartScreen.SetActive(false);
+        IncomingCallScreen.SetActive(false);
+        VideoScreen.SetActive(false);
+        BuscarZonaScreen.SetActive(false);
+        ZonaEncontradaScreen.SetActive(false);
+
+        screen.SetActive(true);
     }
 
     public void acceptCall() {
@@ -34,6 +63,7 @@ public class GameSceneController : MonoBehaviour
         videoPlayer.Pause();
         VideoScreen.SetActive(false);
         BuscarZonaScreen.SetActive(true);
+        GameModePersistence.isLlamadaRecibida = true;
     }
 }
 

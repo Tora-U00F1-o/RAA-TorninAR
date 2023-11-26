@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="MarcadorElCanton" size="2.000000 1.030361" />
+    <ImageTarget name="MarcadorLaTorre" size="2.000000 1.030361" />
+    <ImageTarget name="MarcadorTorninAR" size="1.000000 1.000000" />
+  </Tracking>
+</QCARConfig>
