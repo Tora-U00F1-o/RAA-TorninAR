@@ -15,11 +15,13 @@ public class MapSceneController : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Awake()
     {
         dispositivoAnimator = dispositivo.GetComponent<Animator>();
     }
+
     void Start(){
         if(!GameModePersistence.practiceMode){
             LoadMapContent();
@@ -53,5 +55,10 @@ public class MapSceneController : MonoBehaviour
                 Zona2.SetActive(true);
                 break;
         }
+
     }
+    
+    
+
+
 }

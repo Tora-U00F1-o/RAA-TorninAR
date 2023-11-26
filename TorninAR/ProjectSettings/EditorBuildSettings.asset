@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LimpiarCarteles.unity
     guid: 49acef0380325a847a99ec9324940d1e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 4a0d6223d5c8ee94aa3a96c16facfd90
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 3c7c29642bc85cf48bf5c02ef033da2d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MapaScene.unity
     guid: 9df050e5986f7824c8052aa04345f687
   m_configObjects: {}
