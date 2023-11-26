@@ -13,3 +13,9 @@ TorninAR  #RAAUniovi2023
 
 Ingeniería Informática del Software
 Universidad de Oviedo
+
+Escenas:
+ - MainScene: Menu principal en realidad aumentada sin marcadores
+ - GameScene: Sin marcadores con uso del GPS para geolocalizacion
+ - MapaScene: Escena con marcadores
+ - LimpiarCarteles: Con marcadores y botones virtuales
