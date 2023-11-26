@@ -9,14 +9,14 @@ public class GpsGuiUpdater : MonoBehaviour
     public GameObject 
         latitudeTextObject1, latitudeTextObject2, latitudeTextObject3, 
         longitudeTextObject1, longitudeTextObject2, longitudeTextObject3,
-        goalTextObject1, goalTextObject2, 
-        nombreDestinoObject2, nombreDestinoObject3;
+        DistanciaDestinoTextObject1, DistanciaDestinoTextObject2, 
+        nombreDestinoObject1 , nombreDestinoObject2, nombreDestinoObject3;
 
     
     private TextMeshPro latitudeTextMesh1, latitudeTextMesh2, latitudeTextMesh3, 
         longitudeTextMesh1, longitudeTextMesh2, longitudeTextMesh3,
-        goalTextMesh1, goalTextMesh2, 
-        nombreDestinoTextMesh2, nombreDestinoTextMesh3;
+        DistanciaDestinoTextMesh1, DistanciaDestinoTextMesh2, 
+        nombreDestinoTextMesh1, nombreDestinoTextMesh2, nombreDestinoTextMesh3;
 
 
     // Start is called before the first frame update
@@ -30,16 +30,17 @@ public class GpsGuiUpdater : MonoBehaviour
         longitudeTextMesh2 = longitudeTextObject2.GetComponent<TextMeshPro>();
         longitudeTextMesh3 = longitudeTextObject3.GetComponent<TextMeshPro>();
 
-        goalTextMesh1 = goalTextObject1.GetComponent<TextMeshPro>();
-        goalTextMesh2 = goalTextObject2.GetComponent<TextMeshPro>();
+        DistanciaDestinoTextMesh1 = DistanciaDestinoTextObject1.GetComponent<TextMeshPro>();
+        DistanciaDestinoTextMesh2 = DistanciaDestinoTextObject2.GetComponent<TextMeshPro>();
 
+        nombreDestinoTextMesh1 = nombreDestinoObject1.GetComponent<TextMeshPro>();
         nombreDestinoTextMesh2 = nombreDestinoObject2.GetComponent<TextMeshPro>();
         nombreDestinoTextMesh3 = nombreDestinoObject3.GetComponent<TextMeshPro>();
         
-        updateLatitude("Err");
-        updateLongitude("Err");
-        updateGoal("Err");
-        updateNombreDestino("Err");
+        updateLatitude("Searching...");
+        updateLongitude("Searching...");
+        updateDistanciaDestino("Searching...");
+        updateNombreDestino("Searching...");
     }
 
     
@@ -62,14 +63,16 @@ public class GpsGuiUpdater : MonoBehaviour
             longitudeTextMesh3.text = longitude;
     }
 
-    public void updateGoal(string goal) {
-        if (goalTextMesh1 != null)
-            goalTextMesh1.text = goal;
-        if (goalTextMesh2 != null)  
-            goalTextMesh2.text = goal;
+    public void updateDistanciaDestino(string DistanciaDestino) {
+        if (DistanciaDestinoTextMesh1 != null)
+            DistanciaDestinoTextMesh1.text = DistanciaDestino;
+        if (DistanciaDestinoTextMesh2 != null)  
+            DistanciaDestinoTextMesh2.text = DistanciaDestino;
     }
 
     public void updateNombreDestino(string nombreDestino){
+        if (nombreDestinoTextMesh1 != null)
+            nombreDestinoTextMesh1.text = nombreDestino;
         if (nombreDestinoTextMesh2 != null)
             nombreDestinoTextMesh2.text = nombreDestino;    
         if (nombreDestinoTextMesh3 != null) 

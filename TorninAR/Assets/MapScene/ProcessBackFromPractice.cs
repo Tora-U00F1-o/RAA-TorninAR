@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ProcessBackFromMap : MonoBehaviour
+public class ProcessBackFromPractice : MonoBehaviour
 {
     public string MainMenuScene;
     public string GameScene;

@@ -38,7 +38,7 @@ public class MapSceneController : MonoBehaviour
     }
     
     private void LoadMapContent() {
-        switch (GameModePersistence.zonaObjetivo) {
+        switch (GameModePersistence.zonaActual) {
             case 0:
                 Zona0.SetActive(true);
                 Zona1.SetActive(false);

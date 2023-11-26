@@ -10,6 +10,7 @@ public class GameSceneController : MonoBehaviour
     public GameObject VideoScreen;
     public GameObject BuscarZonaScreen;
     public GameObject ZonaEncontradaScreen;
+    public GameObject FinJuegoScreen;
 
     public VideoPlayer videoPlayer;
 
@@ -22,7 +23,7 @@ public class GameSceneController : MonoBehaviour
         IncomingCallScreen.SetActive(false);
         VideoScreen.SetActive(false);
 
-        if(GameModePersistence.isLlamadaRecibida) {
+        if(GameModePersistence.zonaActual > 0) {
             loadScreen(BuscarZonaScreen);
         } else {
             loadScreen(StartScreen);
@@ -32,13 +33,25 @@ public class GameSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BuscarZonaScreen.activeSelf ) {
-            bool isInZona = false;
-            if(isInZona) {
-                loadScreen(ZonaEncontradaScreen);
-            }
+        // if(BuscarZonaScreen.activeSelf ) {
+        //     bool isInZona = false;
+        //     if(isInZona) {
+        //         loadScreen(ZonaEncontradaScreen);
+        //     }
 
 
+        // }
+    }
+
+    public void destinoAlcanzado() {
+        if(GameModePersistence.zonaActual == 2){
+            loadScreen(FinJuegoScreen);
+            return;
+        }
+        if(GameModePersistence.llamadaRecibida){
+            loadScreen(ZonaEncontradaScreen);
+        } else {
+            loadScreen(IncomingCallScreen);
         }
     }
 
@@ -47,7 +60,8 @@ public class GameSceneController : MonoBehaviour
         IncomingCallScreen.SetActive(false);
         VideoScreen.SetActive(false);
         BuscarZonaScreen.SetActive(false);
-        ZonaEncontradaScreen.SetActive(false);
+        ZonaEncontradaScreen.SetActive(false);  
+        FinJuegoScreen.SetActive(false);
 
         screen.SetActive(true);
     }
@@ -63,7 +77,9 @@ public class GameSceneController : MonoBehaviour
         videoPlayer.Pause();
         VideoScreen.SetActive(false);
         BuscarZonaScreen.SetActive(true);
-        GameModePersistence.isLlamadaRecibida = true;
+        GameModePersistence.puedeSeguirSiguienteZona = false;
+        GameModePersistence.zonaActual = 0;
+        GameModePersistence.llamadaRecibida = true;
     }
 }
 

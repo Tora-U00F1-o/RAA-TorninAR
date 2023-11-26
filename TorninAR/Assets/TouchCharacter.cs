@@ -1,29 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 ///--------------------------------
-///   Author: Victor Alvarez, Ph.D.
-///   University of Oviedo, Spain
+/// Author: Victor Alvarez, Ph.D.
+/// University of Oviedo, Spain
 ///--------------------------------
 
-public class TouchCharacter : MonoBehaviour
+	public class TouchCharacter : MonoBehaviour
 {
-    //public string URL;
-    public Material mat1;
-    public Material mat2;
-    public Component c;
-    private bool on;
-    // public string scene;
+	public string URL;
+	private void OnMouseDown()
+	{
+		Application.OpenURL(URL);
+	}
 
-    private void OnMouseDown()
-    {
-        GetComponent<Renderer>().material = on ? mat1 : mat2 ;
-        on = !on;
-        //Debug.Log("touché");
-       //Application.OpenURL(URL);
-       // SceneManager.LoadScene(scene);
-
-    }
 }

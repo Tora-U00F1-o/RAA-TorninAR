@@ -21,11 +21,13 @@ public class VirtualButtonHandler : MonoBehaviour
         {
             obj1.SetActive(false);
             limpiarSceneController.addTrabajoRealizado( trabajoRealizado );
+            vb1.enabled = false;
         }
         else if (vb == vb2)
         {
             obj2.SetActive(false);
             limpiarSceneController.addTrabajoRealizado( trabajoRealizado );
+            vb2.enabled = false;
         }
 	}
 }

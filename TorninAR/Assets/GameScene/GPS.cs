@@ -65,13 +65,15 @@ public class GPS : MonoBehaviour
         if (pointOfInterest == null) {
             // missing PoI, nowhere to go
             goalText.text = "Missing Point of Interest";
-            gpsGuiUpdater.updateGoal("Missing Point of Interest");
+            gpsGuiUpdater.updateDistanciaDestino("Missing Point of Interest");
         }
         else
         {
             goalPoI = pointOfInterest.GetComponent<PointOfInterest>();
             goalLatitude = goalPoI.getLatitude();
             goalLongitude = goalPoI.getLongitude();
+            gpsGuiUpdater.updateNombreDestino(goalPoI.getNameDestino());
+            
         }
 
         Instance = this;
@@ -165,6 +167,9 @@ public class GPS : MonoBehaviour
         if (longitudeText.IsActive())
             longitudeText.text = longitude.ToString("n6");
 
+            
+        gpsGuiUpdater.updateNombreDestino(goalPoI.getNameDestino());
+
           checkGoal();
     }
 
@@ -182,38 +187,52 @@ public class GPS : MonoBehaviour
                 GoalReached();
             else if (goalText.IsActive()) {
                 goalText.text = "Distance to goal: " + distance.ToString("n0") + " metres";
-                gpsGuiUpdater.updateGoal(distance.ToString("n0") + " metros");
+                gpsGuiUpdater.updateDistanciaDestino(distance.ToString("n0") + " metros");
             }
         }    
-        else if (goalReached && distance > distanceToGoal)
+        else if (goalReached && GameModePersistence.puedeSeguirSiguienteZona)
         {
             goalReached = false;
-            videoPlayer.Stop();
-            screen.SetActive(false);
+            //TODO:videoPlayer.Stop();
+            //screen.SetActive(false);
             // next point of interest
             goalPoI = goalPoI.nextPoI;
             goalLatitude = goalPoI.getLatitude();
             goalLongitude = goalPoI.getLongitude();
             goalCoordinates = new Location(goalLatitude, goalLongitude);
-            videoPlayer.url = goalPoI.getVideoURL();
+            
+            GameModePersistence.puedeSeguirSiguienteZona = false;
+            //TODO: videoPlayer.url = goalPoI.getVideoURL();
         }
 
         
     }
 
+    public GameSceneController gameSceneController;
     /**
      * Plays the video as the goal has been reached.
      */
     private void GoalReached()
     {
         if (goalText.IsActive()){
-            gpsGuiUpdater.updateGoal("Goal Reached !!");
+            gpsGuiUpdater.updateDistanciaDestino("Goal Reached !!");
             goalText.text = "Goal Reached !!";
         }
 
+        int nZonaDestino = goalPoI.getNZona();
+        int nZonaActual = GameModePersistence.zonaActual;
+
+        //if(nZonaDestino != nZonaActual){
+            GameModePersistence.zonaActual = nZonaDestino;
+            gameSceneController.destinoAlcanzado();
+        //}
+
+
+
+
         //TODO:
-        screen.SetActive(true);
-        videoPlayer.Play();
+        // screen.SetActive(true);
+        // videoPlayer.Play();
 
         goalReached = true;
     }
